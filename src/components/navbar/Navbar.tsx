@@ -3,8 +3,13 @@
 import React from "react";
 import { FloatingNav } from "@/components/ui/floating-navbar";
 import { FaHome, FaBlog, FaUser, FaEnvelope } from "react-icons/fa";
+import { useUser } from "@clerk/nextjs";
+
+
 
 const Navbar = () => {
+  const { isLoaded, isSignedIn } = useUser();
+
   const navItems = [
     {
       name: "Home",
@@ -26,13 +31,18 @@ const Navbar = () => {
       link: "/contact",
       icon: <FaEnvelope className="w-5 h-5" />,
     },
+    // Only show Admin link if user is signed in
+    ...(isLoaded && isSignedIn ? [{
+      name: "Admin",
+      link: "/admin",
+      icon: <FaUser className="w-5 h-5" />,
+    }] : []),
   ];
 
   return (
-    <FloatingNav 
-      navItems={navItems}
-      className="fixed top-4 inset-x-0 max-w-2xl mx-auto z-50"
-    />
+    <div className="relative w-full">
+      <FloatingNav navItems={navItems} />
+    </div>
   );
 };
 
