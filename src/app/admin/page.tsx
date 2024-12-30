@@ -110,7 +110,7 @@ export default function AdminDashboard() {
         </div>
 
         {/* Recent Posts Table */}
-        <BackgroundGradient className="rounded-[22px] p-6 bg-background/60 backdrop-blur-xl mb-12">
+        {/* <BackgroundGradient className="rounded-[22px] p-6 bg-background/60 backdrop-blur-xl mb-12">
           <h2 className="text-2xl font-bold mb-6">Recent Posts</h2>
           <div className="overflow-x-auto">
             <table className="w-full">
@@ -143,7 +143,7 @@ export default function AdminDashboard() {
               </tbody>
             </table>
           </div>
-        </BackgroundGradient>
+        </BackgroundGradient> */}
 
         {/* Quick Actions */}
         <BackgroundGradient className="rounded-[22px] p-6 bg-background/60 backdrop-blur-xl">

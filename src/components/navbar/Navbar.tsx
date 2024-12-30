@@ -3,12 +3,13 @@
 import React from "react";
 import { FloatingNav } from "@/components/ui/floating-navbar";
 import { FaHome, FaBlog, FaUser, FaEnvelope } from "react-icons/fa";
+import { MdAdminPanelSettings } from "react-icons/md";
 import { useUser } from "@clerk/nextjs";
 
 
 
 const Navbar = () => {
-  const { isLoaded, isSignedIn } = useUser();
+  const { isLoaded, isSignedIn, user } = useUser();
 
   const navItems = [
     {
@@ -31,11 +32,17 @@ const Navbar = () => {
       link: "/contact",
       icon: <FaEnvelope className="w-5 h-5" />,
     },
+    // Only show Dashboard link if user is signed in
+    ...(isLoaded && isSignedIn || user?.publicMetadata?.role === "user" || user?.publicMetadata?.role === "admin" ? [{
+      name: "Dashboard",
+      link: "/user",
+      icon: <FaUser className="w-5 h-5" />,
+    }] : []),
     // Only show Admin link if user is signed in
-    ...(isLoaded && isSignedIn ? [{
+    ...(isLoaded && isSignedIn && user?.publicMetadata?.role === "admin" ? [{
       name: "Admin",
       link: "/admin",
-      icon: <FaUser className="w-5 h-5" />,
+      icon: <MdAdminPanelSettings className="w-5 h-5" />,
     }] : []),
   ];
 

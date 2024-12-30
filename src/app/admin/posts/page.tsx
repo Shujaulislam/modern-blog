@@ -28,6 +28,7 @@ interface Post {
 }
 
 export default function AdminPosts() {
+  
   const [posts, setPosts] = useState<Post[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
