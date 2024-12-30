@@ -134,6 +134,7 @@ const HomePage = () => {
                     </TextRevealCardDescription>
                     <div className="mt-8">
                       <Button
+                        href="/contact"
                         borderRadius="2.75rem"
                         className="bg-white dark:bg-black text-black dark:text-white border-neutral-200 dark:border-slate-800"
                         containerClassName="p-[1px]"

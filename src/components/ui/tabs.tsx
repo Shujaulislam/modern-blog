@@ -27,18 +27,8 @@ export const Tabs = ({
   onTabChange?: (value: string) => void;
   activeTab?: string;
 }) => {
-  const [active, setActive] = useState<Tab>(propTabs.find(tab => tab.value === activeTab) || propTabs[0]);
-  const [tabs, setTabs] = useState<Tab[]>(propTabs);
-
-  const moveSelectedTabToTop = (idx: number) => {
-    const newTabs = [...propTabs];
-    const selectedTab = newTabs.splice(idx, 1);
-    newTabs.unshift(selectedTab[0]);
-    setTabs(newTabs);
-    setActive(newTabs[0]);
-  };
-
   const [hovering, setHovering] = useState(false);
+  const currentTab = propTabs.find(tab => tab.value === activeTab) || propTabs[0];
 
   return (
     <>
@@ -50,46 +40,22 @@ export const Tabs = ({
       >
         {propTabs.map((tab, idx) => (
           <button
-            key={tab.title}
+            key={tab.value}
             onClick={() => {
-              moveSelectedTabToTop(idx);
+              onTabChange?.(tab.value);
             }}
             onMouseEnter={() => setHovering(true)}
             onMouseLeave={() => setHovering(false)}
-            className={cn("relative px-4 py-2 rounded-full", tabClassName)}
-            style={{
-              transformStyle: "preserve-3d",
-            }}
-          >
-            {active.value === tab.value && (
-              <motion.div
-                layoutId="clickedbutton"
-                transition={{ type: "spring", bounce: 0.3, duration: 0.6 }}
-                className={cn(
-                  "absolute inset-0 bg-gray-200 dark:bg-zinc-800 rounded-full ",
-                  activeTabClassName
-                )}
-              />
+            className={cn(
+              "relative px-4 py-2 rounded-full text-sm transition-colors",
+              tabClassName,
+              tab.value === activeTab ? activeTabClassName : "hover:text-neutral-600"
             )}
-
-            <span className="relative block text-black dark:text-white">
-              {tab.title}
-            </span>
+          >
+            {tab.title}
           </button>
         ))}
       </div>
-
-      {active.content && (
-        <div className={cn("mt-4", contentClassName)}>
-      <FadeInDiv
-        tabs={tabs}
-        active={active}
-        key={active.value}
-        hovering={hovering}
-        className={cn("mt-32", contentClassName)}
-      />
-        </div>
-      )}
     </>
   );
 };
