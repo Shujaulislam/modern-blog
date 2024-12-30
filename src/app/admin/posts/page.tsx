@@ -21,6 +21,7 @@ interface Post {
 }
 
 export default function AdminPosts() {
+  
   const [posts, setPosts] = useState<Post[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [skip, setSkip] = useState(0);
