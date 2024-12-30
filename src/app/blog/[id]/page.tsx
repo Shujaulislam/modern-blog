@@ -1,18 +1,18 @@
 import { Suspense } from 'react';
 import ClientPost from './client-post';
 import { prisma } from '@/lib/prisma';
+import { notFound } from 'next/navigation';
 
 interface BlogPostProps {
-  params: Promise<{ id: string }>;
+  params: { id: string };
 }
 
 export default async function BlogPost({ params }: BlogPostProps) {
 
-  const resolvedParams = await params;
-  const { id } = resolvedParams;
+  const { id: slug } = params;
 
   const post = await prisma.post.findUnique({
-    where: { id },
+    where: { slug },
     include: {
       author: {
         select: {
@@ -31,11 +31,7 @@ export default async function BlogPost({ params }: BlogPostProps) {
   });
 
   if (!post) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-primary"></div>
-      </div>
-    );
+    notFound();
   }
 
   // Get related posts

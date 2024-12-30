@@ -6,7 +6,7 @@ export async function GET(req: NextRequest) {
   try {
     const { userId } = await auth();
     if (!userId) {
-      return new NextResponse("Unauthorized", { status: 401 });
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     // Check if user is admin
@@ -16,7 +16,7 @@ export async function GET(req: NextRequest) {
     });
 
     if (!user || user.role !== "ADMIN") {
-      return new NextResponse("Forbidden", { status: 403 });
+      return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     }
 
     // Get users from our database with post counts
@@ -34,9 +34,9 @@ export async function GET(req: NextRequest) {
       }
     });
 
-    return NextResponse.json(users);
+    return NextResponse.json({ users });
   } catch (error) {
     console.error("[USERS]", error);
-    return new NextResponse("Internal Error", { status: 500 });
+    return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
   }
-} 
+}

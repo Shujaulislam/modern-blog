@@ -6,75 +6,83 @@ import { PostStatus } from "@prisma/client"
 export async function GET(req: NextRequest) {
   try {
     const { searchParams } = new URL(req.url)
-    const status = searchParams.get("status") as PostStatus | null
-    const categoryId = searchParams.get("categoryId")
-    const featured = searchParams.get("featured") === "true"
-    const take = parseInt(searchParams.get("take") || "10")
+    const take = parseInt(searchParams.get("take") || "12")
     const skip = parseInt(searchParams.get("skip") || "0")
+    const status = searchParams.get("status") as PostStatus | null
+    const category = searchParams.get("category")
 
     const where = {
       ...(status && { status }),
-      ...(categoryId && {
+      ...(category && {
         categories: {
           some: {
-            id: categoryId,
-          },
-        },
-      }),
-      ...(featured && { featured: true }),
+            name: category
+          }
+        }
+      })
     }
 
-    const [posts, total] = await Promise.all([
-      prisma.post.findMany({
-        where,
-        include: {
-          author: {
-            select: {
-              username: true,
-              email: true,
-            },
-          },
-          categories: {
-            select: {
-              name: true,
-              slug: true,
-            },
+    const posts = await prisma.post.findMany({
+      where,
+      include: {
+        author: {
+          select: {
+            username: true,
+            email: true,
           },
         },
-        take,
-        skip,
-        orderBy: {
-          createdAt: "desc",
+        categories: {
+          select: {
+            id: true,
+            name: true,
+            slug: true,
+          },
         },
-      }),
-      prisma.post.count({ where }),
-    ])
+      },
+      orderBy: {
+        createdAt: 'desc',
+      },
+      take,
+      skip,
+    })
 
-    return NextResponse.json({ posts, total })
+    const total = await prisma.post.count({ where })
+
+    return NextResponse.json({
+      posts: posts.map(post => ({
+        ...post,
+        createdAt: post.createdAt.toISOString(),
+        updatedAt: post.updatedAt.toISOString(),
+      })),
+      total,
+    })
   } catch (error) {
-    console.error("[POSTS]", error)
-    return new NextResponse("Internal Error", { status: 500 })
+    console.error("[POSTS_GET]", error)
+    return NextResponse.json({ 
+      error: "Internal Server Error",
+      details: error instanceof Error ? error.message : "Unknown error"
+    }, { 
+      status: 500 
+    })
   }
 }
 
 export async function POST(req: NextRequest) {
   try {
-    const { userId } : { userId: string | null } = await auth()
+    const { userId } = await auth()
     if (!userId) {
-      return new NextResponse("Unauthorized", { status: 401 })
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
     }
 
     const user = await prisma.user.findUnique({
       where: { clerkId: userId },
-      select: { id: true },
     })
 
     if (!user) {
-      return new NextResponse("User not found", { status: 404 })
+      return NextResponse.json({ error: "User not found" }, { status: 404 })
     }
 
-    const json = await req.json()
-    const { title, content, excerpt, featuredImage, status, categoryIds } = json
+    const { title, content, excerpt, featuredImage, status, categoryIds = [] } = await req.json()
 
     const slug = title
       .toLowerCase()
@@ -88,17 +96,40 @@ export async function POST(req: NextRequest) {
         content,
         excerpt,
         featuredImage,
-        status,
+        status: status || "DRAFT",
         authorId: user.id,
+        categoryIds,
+      },
+      include: {
+        author: {
+          select: {
+            username: true,
+            email: true,
+          },
+        },
         categories: {
-          connect: categoryIds.map((id: string) => ({ id })),
+          select: {
+            name: true,
+            slug: true,
+          },
         },
       },
     })
 
-    return NextResponse.json(post)
+    return NextResponse.json({
+      post: {
+        ...post,
+        createdAt: post.createdAt.toISOString(),
+        updatedAt: post.updatedAt.toISOString(),
+      }
+    })
   } catch (error) {
-    console.error("[POSTS]", error)
-    return new NextResponse("Internal Error", { status: 500 })
+    console.error("[POSTS_POST]", error)
+    return NextResponse.json({ 
+      error: "Internal Server Error",
+      details: error instanceof Error ? error.message : "Unknown error"
+    }, { 
+      status: 500 
+    })
   }
 }

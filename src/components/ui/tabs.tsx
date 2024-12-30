@@ -16,14 +16,18 @@ export const Tabs = ({
   activeTabClassName,
   tabClassName,
   contentClassName,
+  onTabChange,
+  activeTab,
 }: {
   tabs: Tab[];
   containerClassName?: string;
   activeTabClassName?: string;
   tabClassName?: string;
   contentClassName?: string;
+  onTabChange?: (value: string) => void;
+  activeTab?: string;
 }) => {
-  const [active, setActive] = useState<Tab>(propTabs[0]);
+  const [active, setActive] = useState<Tab>(propTabs.find(tab => tab.value === activeTab) || propTabs[0]);
   const [tabs, setTabs] = useState<Tab[]>(propTabs);
 
   const moveSelectedTabToTop = (idx: number) => {
@@ -74,6 +78,9 @@ export const Tabs = ({
           </button>
         ))}
       </div>
+
+      {active.content && (
+        <div className={cn("mt-4", contentClassName)}>
       <FadeInDiv
         tabs={tabs}
         active={active}
@@ -81,6 +88,8 @@ export const Tabs = ({
         hovering={hovering}
         className={cn("mt-32", contentClassName)}
       />
+        </div>
+      )}
     </>
   );
 };
@@ -88,6 +97,7 @@ export const Tabs = ({
 export const FadeInDiv = ({
   className,
   tabs,
+  active,
   hovering,
 }: {
   className?: string;
