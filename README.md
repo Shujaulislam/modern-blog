@@ -1,40 +1,62 @@
-# Modern Blog 🗒️
+# Modern Blog Platform 🗒️
 
-A modern, feature-rich blog platform built with Next.js 15, featuring beautiful UI components from Aceternity UI and comprehensive content management capabilities.
+A modern, feature-rich blog platform built with Next.js 15, featuring stunning UI components and robust functionality.
 
 ## 🌟 Features
 
-### Implemented ✅
-- Responsive Design (Mobile First)
-- Dark/Light Theme Support
-- Interactive World Map with Location Connections
-- Contact Form with Validation
+### Completed Features ✅
+- Responsive Design with Mobile-First Approach
+- Dynamic Landing Page with Interactive UI
+- Authentication & Authorization with Clerk
+- Admin Dashboard with Protected Routes
 - Database Integration with Prisma
 - Modern UI Components with Aceternity UI
+- Dark/Light Theme Support
+- Contact Form with Validation
+- API Routes Implementation
+- Infinite Scroll Blog Posts
+- Interactive 3D Components
+- Particle Effects & Animations
 
 ### In Progress 🚧
-- Authentication with Clerk
-- Blog Post Management
-- Admin Dashboard
-- Content Management System
+- Rich Text Editor Integration
+- Blog Post Management System
+- User Profile Management
+- Image Upload with Cloudinary
 
 ### Planned 📋
-- Rich Text Editor Integration
-- Image Upload System
+- Content Management System
+- Post Categories & Tags
+- Search Functionality
 - Performance Optimization
+- Analytics Dashboard
 - Comprehensive Testing Suite
 
 ## 🛠️ Tech Stack
 
+### Frontend
 - **Framework:** Next.js 15
-- **Styling:** Tailwind CSS, Aceternity UI
-- **Database:** MongoDB with Prisma
-- **Authentication:** Clerk
+- **Library:** React 19
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS
 - **UI Components:** 
   - Framer Motion
+  - Three.js
   - Aceternity UI Components
-  - Interactive World Map
-- **Form Handling:** React Hook Form with Zod
+
+### Backend & Database
+- **ORM:** Prisma ORM
+- **Database:** MongoDB
+- **API Routes:** Next.js API Routes
+
+### Authentication & Storage
+- **Authentication:** Clerk Authentication
+- **Storage:** Cloudinary (for images)
+
+### Development Tools
+- **Language:** TypeScript
+- **Linter:** ESLint
+- **Formatter:** Prettier
 
 ## 🚀 Getting Started
 
