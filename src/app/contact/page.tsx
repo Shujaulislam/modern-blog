@@ -56,14 +56,14 @@ const ContactPage = () => {
   ];
 
   return (
-    <main className="min-h-screen bg-black/[0.96] antialiased bg-grid-white/[0.02]">
+    <main className="min-h-screen bg-white dark:bg-black/[0.96] antialiased bg-grid-black/[0.02] dark:bg-grid-white/[0.02]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-24">
         {/* Header Section */}
         <div className="text-center mb-20">
-          <h1 className="text-4xl md:text-6xl font-bold text-neutral-200">
+          <h1 className="text-4xl md:text-6xl font-bold text-neutral-800 dark:text-neutral-200">
             {words}
           </h1>
-          <p className="mt-4 text-neutral-400 max-w-2xl mx-auto">
+          <p className="mt-4 text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto">
             {description}
           </p>
         </div>
@@ -89,15 +89,15 @@ const ContactPage = () => {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="block p-6 bg-neutral-900/50 rounded-2xl border border-neutral-800 hover:bg-neutral-800/50 transition-colors"
+                className="block p-6 bg-neutral-100/50 dark:bg-neutral-900/50 rounded-2xl border border-neutral-200 dark:border-neutral-800 hover:bg-neutral-200/50 dark:hover:bg-neutral-800/50 transition-colors"
               >
                 <div className="flex items-center space-x-4">
-                  <div className="text-emerald-500">
+                  <div className="text-emerald-600 dark:text-emerald-500">
                     {info.icon}
                   </div>
                   <div>
-                    <h3 className="text-lg font-medium text-neutral-200">{info.title}</h3>
-                    <p className="text-neutral-400">{info.content}</p>
+                    <h3 className="text-lg font-medium text-neutral-800 dark:text-neutral-200">{info.title}</h3>
+                    <p className="text-neutral-600 dark:text-neutral-400">{info.content}</p>
                   </div>
                 </div>
               </motion.a>

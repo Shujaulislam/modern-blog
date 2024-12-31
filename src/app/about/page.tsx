@@ -36,13 +36,20 @@ import {
   IconBrandRadixUi,
   IconBrandReact,
   IconBrandGithub,
-  IconBrandMongodb
+  IconBrandMongodb,
+  IconBrandJavascript,
+  IconBrandNodejs,
+  IconServer,
+  IconBrandRedux,
+  IconBrandFigma,
+  IconBrandDocker
 } from "@tabler/icons-react";
 import { CardContainer, CardBody, CardItem } from "@/components/ui/3d-card";
 
 const AboutPage = () => {
   const words = "Crafting Digital Experiences & Sharing Knowledge";
   const description = "Passionate about web development, technology, and creating content that helps others learn and grow.";
+  
 
   const bentoItems = [
     {
@@ -100,174 +107,87 @@ const AboutPage = () => {
     }
   ];
 
-  const projects = [
-    {
-      title: "Web Development",
-      description: "Creating responsive, modern web applications with Next.js and React",
-      link: "#",
-    },
-    {
-      title: "Technical Writing",
-      description: "Sharing in-depth tutorials and development experiences",
-      link: "#",
-    },
-    {
-      title: "Open Source",
-      description: "Contributing to and maintaining open source projects",
-      link: "#",
-    },
-    {
-      title: "Community Building",
-      description: "Fostering a community of developers and learners",
-      link: "#",
-    },
-  ];
 
-  const techStackData = [
-    {
-      category: "Building Modern UIs",
-      description: "Creating responsive and interactive user interfaces",
-      icon: <IconDeviceDesktop className="w-6 h-6" />,
-      items: [
-        {
-          name: "React & Next.js",
-          description: "Building performant web applications with modern React patterns and Next.js features",
-          icon: <IconBrandReact className="w-8 h-8" />,
-          tools: ["React.js", "Next.js", "Hooks", "Server Components"]
-        },
-        {
-          name: "UI Libraries",
-          description: "Crafting beautiful interfaces with modern CSS frameworks and UI libraries",
-          icon: <IconBrandTailwind className="w-8 h-8" />,
-          tools: ["Tailwind CSS", "Mantine", "Material UI", "Framer Motion"]
-        },
-        {
-          name: "Core Web Technologies",
-          description: "Strong foundation in web development fundamentals",
-          icon: <IconBrandHtml5 className="w-8 h-8" />,
-          tools: ["HTML5", "CSS3", "JavaScript", "TypeScript"]
-        },
-      ]
-    },
-    {
-      category: "Development Workflow",
-      description: "Efficient development practices and tools",
-      icon: <IconTools className="w-6 h-6" />,
-      items: [
-        {
-          name: "Version Control",
-          description: "Managing code and collaborating using Git and GitHub",
-          icon: <IconBrandGithub className="w-8 h-8" />,
-          tools: ["Git", "GitHub", "Version Control", "Collaboration"]
-        },
-        {
-          name: "Development Tools",
-          description: "Using modern development tools for efficient workflow",
-          icon: <IconBrandVscode className="w-8 h-8" />,
-          tools: ["VS Code", "DevTools", "Postman", "Terminal"]
-        },
-        {
-          name: "API Integration",
-          description: "Working with RESTful APIs and data fetching",
-          icon: <IconApi className="w-8 h-8" />,
-          tools: ["REST APIs", "Axios", "Data Fetching", "Integration"]
-        },
-      ]
-    },
-    {
-      category: "Core Technologies",
-      description: "Programming languages and development standards",
-      icon: <IconCode className="w-6 h-6" />,
-      items: [
-        {
-          name: "Languages",
-          description: "Proficient in multiple programming languages",
-          icon: <IconBrandCpp className="w-8 h-8" />,
-          tools: ["JavaScript", "TypeScript", "C++", "HTML/CSS"]
-        },
-        {
-          name: "Best Practices",
-          description: "Following development standards and best practices",
-          icon: <IconRocket className="w-8 h-8" />,
-          tools: ["Clean Code", "Performance", "Accessibility", "SEO"]
-        },
-        {
-          name: "Development Standards",
-          description: "Modern development principles and patterns",
-          icon: <IconBrain className="w-8 h-8" />,
-          tools: ["Component Patterns", "State Management", "Code Organization"]
-        },
-      ]
-    },
-  ];
+  // const projects = [
+  //   {
+  //     title: "Web Development",
+  //     description: "Creating responsive, modern web applications with Next.js and React",
+  //     link: "#",
+  //   },
+  //   {
+  //     title: "Technical Writing",
+  //     description: "Sharing in-depth tutorials and development experiences",
+  //     link: "#",
+  //   },
+  //   {
+  //     title: "Open Source",
+  //     description: "Contributing to and maintaining open source projects",
+  //     link: "#",
+  //   },
+  //   {
+  //     title: "Community Building",
+  //     description: "Fostering a community of developers and learners",
+  //     link: "#",
+  //   },
+  // ];
 
   const techCategories = [
     {
-      title: "Frontend Development",
-      description: "Building responsive and interactive user interfaces",
-      technologies: [
-        {
-          name: "React",
-          icon: <IconBrandReact className="w-8 h-8" />,
-        },
-        {
-          name: "Next.js",
-          icon: <IconBrandNextjs className="w-8 h-8" />,
-        },
-        {
-          name: "Tailwind CSS",
-          icon: <IconBrandTailwind className="w-8 h-8" />,
-        },
-      ],
+      title: "Languages",
+      description: "Core programming languages I work with",
+      items: [
+        { name: "JavaScript", icon: <IconBrandJavascript className="text-[#F7DF1E]" /> },
+        { name: "TypeScript", icon: <IconBrandTypescript className="text-[#3178C6]" /> },
+        { name: "HTML5", icon: <IconBrandHtml5 className="text-[#E34F26]" /> },
+        { name: "CSS3", icon: <IconBrandCss3 className="text-[#1572B6]" /> },
+        { name: "C++", icon: <IconBrandCpp className="text-[#00599C]" /> }
+      ]
     },
     {
-      title: "Backend Development",
-      description: "Building robust and scalable server-side applications",
-      technologies: [
-        {
-          name: "Node.js",
-          icon: <IconCode className="w-8 h-8" />,
-        },
-        {
-          name: "Express.js",
-          icon: <IconApi className="w-8 h-8" />,
-        },
-        {
-          name: "MongoDB",
-          icon: <IconBrandMongodb className="w-8 h-8" />,
-        },
-      ],
+      title: "Frameworks",
+      description: "Modern frameworks for building scalable applications",
+      items: [
+        { name: "React", icon: <IconBrandReact className="text-[#61DAFB]" /> },
+        { name: "Next.js", icon: <IconBrandNextjs className="text-neutral-800 dark:text-white" /> },
+        { name: "Node.js", icon: <IconBrandNodejs className="text-[#339933]" /> },
+        { name: "Express", icon: <IconServer className="text-neutral-800 dark:text-white" /> },
+        { name: "Prisma", icon: <IconDatabase className="text-[#2D3748]" /> }
+      ]
     },
     {
-      title: "DevOps",
-      description: "Ensuring efficient development and deployment processes",
-      technologies: [
-        {
-          name: "Git",
-          icon: <IconBrandGit className="w-8 h-8" />,
-        },
-        {
-          name: "GitHub",
-          icon: <IconBrandGithub className="w-8 h-8" />,
-        },
-        {
-          name: "VS Code",
-          icon: <IconBrandVscode className="w-8 h-8" />,
-        },
-      ],
+      title: "Libraries",
+      description: "Essential libraries and UI components",
+      items: [
+        { name: "Tailwind CSS", icon: <IconBrandTailwind className="text-[#06B6D4]" /> },
+        { name: "Framer Motion", icon: <IconBrandFramer className="text-[#0055FF]" /> },
+        { name: "Redux", icon: <IconBrandRedux className="text-[#764ABC]" /> },
+        { name: "React Query", icon: <IconApi className="text-[#FF4154]" /> },
+        { name: "Zustand", icon: <IconBrain className="text-[#FFB800]" /> }
+      ]
     },
+    {
+      title: "Tools",
+      description: "Development and productivity tools",
+      items: [
+        { name: "Git", icon: <IconBrandGit className="text-[#F05032]" /> },
+        { name: "VS Code", icon: <IconBrandVscode className="text-[#007ACC]" /> },
+        { name: "Figma", icon: <IconBrandFigma className="text-[#F24E1E]" /> },
+        { name: "Docker", icon: <IconBrandDocker className="text-[#2496ED]" /> },
+        { name: "Postman", icon: <IconApi className="text-[#FF6C37]" /> }
+      ]
+    }
   ];
 
   return (
-    <main className="min-h-screen bg-black/[0.96] antialiased bg-grid-white/[0.02]">
+    <main className="min-h-screen bg-white dark:bg-black/[0.96] antialiased bg-grid-black/[0.02] dark:bg-grid-white/[0.02]">
       {/* Hero Section */}
       <section className="relative py-20 overflow-hidden">
         <div className="relative z-10 max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 bg-opacity-50">
+            <h1 className="text-4xl md:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-neutral-950 to-neutral-500 dark:from-neutral-50 dark:to-neutral-400 bg-opacity-50">
               <TextGenerateEffect words={words} />
             </h1>
-            <p className="mt-4 font-normal text-lg text-neutral-300 max-w-lg mx-auto">
+            <p className="mt-4 font-normal text-lg text-neutral-700 dark:text-neutral-300 max-w-lg mx-auto">
               {description}
             </p>
           </div>
@@ -287,12 +207,12 @@ const AboutPage = () => {
                     <div>
                       <div className="flex items-center gap-2 mb-2">
                         {item.icon}
-                        <p className="text-sm text-neutral-500">{item.header}</p>
+                        <p className="text-sm text-neutral-600 dark:text-neutral-500">{item.header}</p>
                       </div>
-                      <h3 className="text-xl font-semibold text-neutral-200 mb-2">
+                      <h3 className="text-xl font-semibold text-neutral-800 dark:text-neutral-200 mb-2">
                         {item.title}
                       </h3>
-                      <p className="text-neutral-400">{item.description}</p>
+                      <p className="text-neutral-600 dark:text-neutral-400">{item.description}</p>
                     </div>
                   </div>
                 </CardGlow>
@@ -307,7 +227,8 @@ const AboutPage = () => {
       <section className="relative px-4 py-20 overflow-hidden">
         <div className="max-w-7xl mx-auto">
             <TracingBeam >
-          <h2 className="text-3xl md:text-5xl font-bold text-center mb-20 bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400">
+          <h2 className="text-3xl md:text-5xl font-bold text-center mb-20 bg-clip-text text-transparent 
+          bg-gradient-to-b from-neutral-950 to-neutral-500 dark:from-neutral-50 dark:to-neutral-400">
             My Journey
           </h2>
 
@@ -320,151 +241,51 @@ const AboutPage = () => {
         </div>
       </section>
 
-      {/* Tech Stack Section - Approach 1: CardGlow */}
-      <section className="relative px-4 py-20 overflow-hidden">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl md:text-5xl font-bold text-center mb-20 bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400">
-            Tech Stack - Clean & Modern
-          </h2>
-
-          <div className="space-y-20">
-            {techStackData.map((category, categoryIndex) => (
-              <div key={categoryIndex} className="space-y-8">
-                <div className="flex items-center gap-4 justify-center">
-                  <div className="text-neutral-400">
-                    {category.icon}
-                  </div>
-                  <h3 className="text-2xl font-semibold text-neutral-200 text-center">
-                    {category.category}
-                  </h3>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  {category.items.map((item, itemIndex) => (
-                    <CardGlow key={itemIndex}>
-                      <div className="p-6 h-full">
-                        <div className="flex items-center gap-4 mb-4">
-                          <div className="text-neutral-400 group-hover:text-sky-400 transition-colors duration-300">
-                            {item.icon}
-                          </div>
-                          <h4 className="text-xl font-medium text-neutral-200">
-                            {item.name}
-                          </h4>
-                        </div>
-                        <p className="text-neutral-400 leading-relaxed mb-4">
-                          {item.description}
-                        </p>
-                        <div className="flex flex-wrap gap-2">
-                          {item.tools.map((tool, toolIndex) => (
-                            <span
-                              key={toolIndex}
-                              className="text-sm px-2 py-1 rounded-md bg-neutral-900 text-neutral-400"
-                            >
-                              {tool}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    </CardGlow>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Tech Stack Section - Approach 2: 3D Cards */}
+      {/* Tech Stack Section */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold text-neutral-800 dark:text-white">Tech Stack</h2>
-          <p className="mt-2 text-lg text-neutral-600 dark:text-neutral-400">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-neutral-950 to-neutral-500 dark:from-neutral-50 dark:to-neutral-400">
+            Tech Stack
+          </h2>
+          <p className="mt-4 text-xl text-neutral-600 dark:text-neutral-400">
             Technologies and tools I work with
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
           {techCategories.map((category, index) => (
             <CardContainer key={index} className="w-full">
-              <CardBody className="bg-zinc-900 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto h-auto rounded-xl p-6 border">
+              <CardBody className="bg-white relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto h-auto rounded-xl p-6 border">
                 <CardItem
                   translateZ="50"
-                  className="text-xl font-bold text-neutral-600 dark:text-white"
+                  className="text-2xl font-bold text-neutral-800 dark:text-neutral-200"
                 >
                   {category.title}
                 </CardItem>
                 <CardItem
                   translateZ="60"
-                  className="text-neutral-500 text-sm max-w-sm mt-2 dark:text-neutral-300"
+                  className="text-neutral-600 dark:text-neutral-400 text-sm max-w-sm mt-2"
                 >
                   {category.description}
                 </CardItem>
                 <CardItem translateZ="100" className="w-full mt-4">
-                  <div className="flex flex-wrap gap-2">
-                    {category.technologies.map((tech, techIndex) => (
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                    {category.items.map((item, itemIndex) => (
                       <div
-                        key={techIndex}
-                        className="flex items-center gap-2 px-3 py-1.5 bg-neutral-800 dark:bg-neutral-900 rounded-lg text-sm text-white"
+                        key={itemIndex}
+                        className="flex flex-col items-center p-3 rounded-lg bg-neutral-50 dark:bg-neutral-900 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
                       >
-                        {tech.icon}
-                        {tech.name}
+                        <div className="w-8 h-8 mb-2">
+                          {item.icon}
+                        </div>
+                        <span className="text-sm text-neutral-700 dark:text-neutral-300 text-center">
+                          {item.name}
+                        </span>
                       </div>
                     ))}
                   </div>
                 </CardItem>
               </CardBody>
             </CardContainer>
-          ))}
-        </div>
-      </section>
-
-      {/* Tech Stack Section - Approach 3: Masonry Grid */}
-      <section className="relative px-4 py-20 overflow-hidden">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl md:text-5xl font-bold text-center mb-20 bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400">
-            Tech Stack - Masonry Layout
-          </h2>
-
-          {techStackData.map((category, categoryIndex) => (
-            <div key={categoryIndex} className="mb-20">
-              <div className="flex items-center gap-4 justify-center mb-12">
-                <div className="text-neutral-400">
-                  {category.icon}
-                </div>
-                <h3 className="text-2xl font-semibold text-neutral-200 text-center">
-                  {category.category}
-                </h3>
-              </div>
-              <MasonryGrid>
-                {category.items.map((item, itemIndex) => (
-                  <MasonryItem key={itemIndex} index={itemIndex}>
-                    <CardGlow>
-                      <div className="p-6">
-                        <div className="flex items-center gap-4 mb-4">
-                          <div className="text-neutral-400 group-hover:text-sky-400 transition-colors duration-300">
-                            {item.icon}
-                          </div>
-                          <h4 className="text-xl font-medium text-neutral-200">
-                            {item.name}
-                          </h4>
-                        </div>
-                        <p className="text-neutral-400 leading-relaxed mb-4">
-                          {item.description}
-                        </p>
-                        <div className="flex flex-wrap gap-2">
-                          {item.tools.map((tool, toolIndex) => (
-                            <span
-                              key={toolIndex}
-                              className="text-sm px-2 py-1 rounded-md bg-neutral-900 text-neutral-400"
-                            >
-                              {tool}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    </CardGlow>
-                  </MasonryItem>
-                ))}
-              </MasonryGrid>
-            </div>
           ))}
         </div>
       </section>

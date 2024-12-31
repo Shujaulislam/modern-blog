@@ -67,7 +67,7 @@ export const TextRevealCard = ({
       onTouchMove={touchMoveHandler}
       ref={cardRef}
       className={cn(
-        "bg-[#1d1c20] border border-white/[0.08] w-[40rem] rounded-lg p-8 relative overflow-hidden",
+        "bg-[#e7e4ed] dark:bg-[#1d1c20] border border-white/[0.05] dark:border-white/[0.05] w-[40rem] rounded-lg p-8 relative overflow-hidden",
         className
       )}
     >
@@ -89,7 +89,7 @@ export const TextRevealCard = ({
                 }
           }
           transition={isMouseOver ? { duration: 0 } : { duration: 0.4 }}
-          className="absolute bg-[#1d1c20] z-20  will-change-transform"
+          className="absolute bg-[#e7e4ed] dark:bg-[#1d1c20] z-20  will-change-transform"
         >
           <p
             style={{
@@ -173,7 +173,7 @@ const Stars = () => {
             left: `${random() * 100}%`,
             width: `2px`,
             height: `2px`,
-            backgroundColor: "white",
+            backgroundColor: "var(--particle-color)",
             borderRadius: "50%",
             zIndex: 1,
           }}
